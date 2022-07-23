@@ -8,8 +8,8 @@ from tqdm import tqdm
 import sys
 sys.path.append('../')
 
-from pipeline_input import *
-from constants import *
+from ML_Ops_Pipeline.pipeline_input import *
+from ML_Ops_Pipeline.constants import *
 
 class depth_interp_airsim(pipeline_dataset_interpreter):
 	NUM_CAMS = 0
