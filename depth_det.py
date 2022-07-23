@@ -115,14 +115,12 @@ class videos_vis(pipeline_data_visualizer):
 class depth_evaluator:
 
 	def evaluate(self, x: pd.DataFrame, y, plot=False):
-		predict_results = {
-			'depth_image': []
-		}
-		predict_results = pd.DataFrame(predict_results)
+		predict_results = self.predict(x)
 		
 		for inxex, row in tqdm(x.iterrows(), total=x.shape[0]):
-			pred = self.predict(row)
-			predict_results.append(pred)
+			# pred = self.predict(row)
+			# predict_results.append(pred)
+			pass
 		
 		results = {
 			'metric1': 0.0
