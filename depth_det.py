@@ -164,27 +164,28 @@ class depth_pipeline_model(depth_evaluator, pipeline_model):
 			'input':[],'depth':[],'input_full':[]
 		}
 		# TODO: Implement prediction
-		image_files = x["ImageFile"].split(";")
-		for image_path in image_files:
+		for index, img in x.iterrows():
+			image_files = img["ImageFile"].split(";")
+			for image_path in image_files:
 
-			f = image_path.split("/")[-1]
-			cam_id, img_format = f.split("_")[2:4]
-			img_format = int(img_format)
-			if f.endswith('.ppm'):
-				#img = PIL.Image.open(image_path)
-				#img = np.array(img.getdata()).reshape(img.size[1], img.size[0], 3)
-				img = cv2.imread(image_path)
-			#elif f.endswith('.pfm'):
-			#	img, scale = airsim.read_pfm(f)
-			else:
-				print("Unknown format")
+				f = image_path.split("/")[-1]
+				cam_id, img_format = f.split("_")[2:4]
+				img_format = int(img_format)
+				if f.endswith('.ppm'):
+					#img = PIL.Image.open(image_path)
+					#img = np.array(img.getdata()).reshape(img.size[1], img.size[0], 3)
+					img = cv2.imread(image_path)
+				#elif f.endswith('.pfm'):
+				#	img, scale = airsim.read_pfm(f)
+				else:
+					print("Unknown format")
 
-			depth = self.model.eval(img)
-			depth_path = os.path.join(self.training_dir, f)
-			cv2.imwrite(depth_path, depth)
-			predict_results['input'] += [f]
-			predict_results['input_full'] += [image_path]
-			predict_results['depth'] += [depth_path]
+				depth = self.model.eval(img)
+				depth_path = os.path.join(self.training_dir, f)
+				cv2.imwrite(depth_path, depth)
+				predict_results['input'] += [f]
+				predict_results['input_full'] += [image_path]
+				predict_results['depth'] += [depth_path]
 			
 		# 	cv2.imshow('depth_'+str(cam_id),depth)
 		# cv2.waitKey(1)
