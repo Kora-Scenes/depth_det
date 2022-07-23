@@ -270,14 +270,14 @@ class depth_pipeline_manydepth(depth_pipeline_model, depth_evaluator, pipeline_m
 depth_input = pipeline_input("depth_det", {'depth_interp_airsim': depth_interp_airsim}, 
 	{
 		'depth_pipeline_monodepth2_mono_640x192': depth_pipeline_monodepth2_mono_640x192,
-		'depth_pipeline_monodepth2_stereo_640x192': depth_pipeline_monodepth2_stereo_640x192,
+		# 'depth_pipeline_monodepth2_stereo_640x192': depth_pipeline_monodepth2_stereo_640x192,
 		'depth_pipeline_monodepth2_mono_stereo_640x192': depth_pipeline_monodepth2_mono_stereo_640x192,
 		'depth_pipeline_monodepth2_mono_no_pt_640x192': depth_pipeline_monodepth2_mono_no_pt_640x192,
-		'depth_pipeline_monodepth2_stereo_no_pt_640x192': depth_pipeline_monodepth2_stereo_no_pt_640x192,
-		'depth_pipeline_monodepth2_mono_stereo_no_pt_640x192': depth_pipeline_monodepth2_mono_stereo_no_pt_640x192,
+		# 'depth_pipeline_monodepth2_stereo_no_pt_640x192': depth_pipeline_monodepth2_stereo_no_pt_640x192,
+		# 'depth_pipeline_monodepth2_mono_stereo_no_pt_640x192': depth_pipeline_monodepth2_mono_stereo_no_pt_640x192,
 		'depth_pipeline_monodepth2_mono_1024x320': depth_pipeline_monodepth2_mono_1024x320,
-		'depth_pipeline_monodepth2_stereo_1024x320': depth_pipeline_monodepth2_stereo_1024x320,
-		'depth_pipeline_monodepth2_mono_stereo_1024x320': depth_pipeline_monodepth2_mono_stereo_1024x320,
+		# 'depth_pipeline_monodepth2_stereo_1024x320': depth_pipeline_monodepth2_stereo_1024x320,
+		# 'depth_pipeline_monodepth2_mono_stereo_1024x320': depth_pipeline_monodepth2_mono_stereo_1024x320,
 		#'depth_pipeline_manydepth': depth_pipeline_manydepth
 	}, dict(), {
 		'videos_vis': videos_vis
