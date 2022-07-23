@@ -187,8 +187,6 @@ class depth_pipeline_model(depth_evaluator, pipeline_model):
 				predict_results['input_full'] += [image_path]
 				predict_results['depth'] += [depth_path]
 			
-		# 	cv2.imshow('depth_'+str(cam_id),depth)
-		# cv2.waitKey(1)
 		predict_results = pd.DataFrame(predict_results)
 		return predict_results
 
