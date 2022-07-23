@@ -181,7 +181,7 @@ class depth_pipeline_model(depth_evaluator, pipeline_model):
 					print("Unknown format")
 
 				depth = self.model.eval(img)
-				depth_path = os.path.join(self.training_dir, f)
+				depth_path = os.path.join(self.training_dir, f + ".png")
 				cv2.imwrite(depth_path, depth)
 				predict_results['input'] += [f]
 				predict_results['input_full'] += [image_path]
