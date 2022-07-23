@@ -152,12 +152,8 @@ class depth_pipeline_model(depth_evaluator, pipeline_model):
 		self.model = monodepth2.monodepth2()
 		
 	def train(self, x, y):
-		predict_results = []
-		for inxex, row in tqdm(x.iterrows(), total=x.shape[0]):
-			pred = self.predict(row)
-			predict_results.append(pred)
+		results, predict_results = self.evaluate(x,y)
 		
-		results = 0
 		# TODO: implement training
 		return results, predict_results
 		
