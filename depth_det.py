@@ -157,7 +157,7 @@ class depth_pipeline_model(depth_evaluator, pipeline_model):
 		# TODO: implement training
 		return results, predict_results
 		
-	def predict(self, x) -> np.array:
+	def predict(self, x):
 		# Runs prediction on list of values x of length n
 		# Returns a list of values of length n
 		predict_results = {
@@ -180,9 +180,11 @@ class depth_pipeline_model(depth_evaluator, pipeline_model):
 				print("Unknown format")
 
 			depth = self.model.eval(img)
+			depth_path = os.path.join(self.training_dir, f)
+			cv2.imwrite(depth_path, depth)
 			predict_results['input'] += [f]
 			predict_results['input_full'] += [image_path]
-			predict_results['depth'] += [depth]
+			predict_results['depth'] += [depth_path]
 			
 		# 	cv2.imshow('depth_'+str(cam_id),depth)
 		# cv2.waitKey(1)
