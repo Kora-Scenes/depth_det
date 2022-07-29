@@ -125,7 +125,7 @@ class imgs_vis(pipeline_data_visualizer):
 			depth = cv2.imread(row['depth'])
 			cam_id, img_format = f.split("_")[2:4]
 			full_frame = cv2.vconcat([input_img, depth])
-			out_path = os.path.join(directory, f)
+			out_path = os.path.join(directory, f + "imgs_vis.png")
 			cv2.imwrite(out_path, full_frame)
 
 
@@ -135,8 +135,7 @@ class depth_evaluator:
 		predict_results = self.predict(x)
 		
 		for inxex, row in tqdm(x.iterrows(), total=x.shape[0]):
-			# TODO: Implement depth metrics
-			
+			# TODO: Implement depth metrics 
 			pass 
 		
 		results = {
