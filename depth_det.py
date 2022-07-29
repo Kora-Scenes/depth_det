@@ -118,8 +118,6 @@ class depth_evaluator:
 		predict_results = self.predict(x)
 		
 		for inxex, row in tqdm(x.iterrows(), total=x.shape[0]):
-			# pred = self.predict(row)
-			# predict_results.append(pred)
 			# TODO: Implement depth metrics
 			pass
 		
