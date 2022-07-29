@@ -112,6 +112,23 @@ class videos_vis(pipeline_data_visualizer):
 		writer.release()
 
 
+class imgs_vis(pipeline_data_visualizer):
+
+	def visualize(self, x, y, results, preds, directory) -> None:
+		writer = None
+
+		for index1, row in tqdm(preds.iterrows()):
+			all_frames = []
+			
+			f = row['input']
+			input_img = cv2.imread(row['input_full'])
+			depth = cv2.imread(row['depth'])
+			cam_id, img_format = f.split("_")[2:4]
+			full_frame = cv2.vconcat([input_img, depth])
+			out_path = os.path.join(directory, f)
+			cv2.imwrite(out_path, full_frame)
+
+
 class depth_evaluator:
 
 	def evaluate(self, x: pd.DataFrame, y, plot=False):
@@ -119,7 +136,8 @@ class depth_evaluator:
 		
 		for inxex, row in tqdm(x.iterrows(), total=x.shape[0]):
 			# TODO: Implement depth metrics
-			pass
+			
+			pass 
 		
 		results = {
 			'metric1': 0.0
@@ -278,7 +296,8 @@ depth_input = pipeline_input("depth_det", {'depth_interp_airsim': depth_interp_a
 		# 'depth_pipeline_monodepth2_mono_stereo_1024x320': depth_pipeline_monodepth2_mono_stereo_1024x320,
 		#'depth_pipeline_manydepth': depth_pipeline_manydepth
 	}, dict(), {
-		'videos_vis': videos_vis
+		# 'videos_vis': videos_vis,
+		'imgs_vis': imgs_vis
 	})
 
 
